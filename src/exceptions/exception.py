@@ -1,4 +1,5 @@
 import sys
+from src.logger.logger import logging
 
 class CustomException(Exception):
 
@@ -12,6 +13,7 @@ class CustomException(Exception):
         self.filename = exc_tb.tb_frame.f_code.co_filename
 
     def __str__(self):
+        logging.error(f"Error occured in {self.filename} at line {self.line} \n error message: << {self.error_msg} >>")
         return f"Error occured in {self.filename} at line {self.line} \n error message: << {self.error_msg} >>"
 
 if __name__=="__main__":
