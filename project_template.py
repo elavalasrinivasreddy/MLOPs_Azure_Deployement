@@ -30,6 +30,9 @@ list_files = [
     "pyproject.toml",
     "tox.ini",
     "experiment/experiments.ipynb",
+    "templates",
+    "templates/index.html"
+    "app.py"
 ]
 
 for filepath in list_files:

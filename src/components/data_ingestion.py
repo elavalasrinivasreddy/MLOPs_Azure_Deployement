@@ -39,21 +39,23 @@ class DataIngestion:
                                                   path=self.ingestion_config.raw_data_dir,
                                                   unzip=True)
                 logging.debug("Raw dataset is downloaded into artifact folder from Kaggle")
-                # list the files
-                data_files = glob.glob(os.path.join(self.ingestion_config.raw_data_dir, "*.csv"))
                 
-                if len(data_files) ==1:
-                    raw_data = pd.read_csv(data_files[0])
-                    raw_data.to_csv(os.path.join(self.ingestion_config.raw_data_dir,'raw_data.csv'), index=False)
+                raw_data = pd.read_csv(os.path.join(self.ingestion_config.raw_data_dir, "train.csv"))
+                # list the files
+                # data_files = glob.glob(os.path.join(self.ingestion_config.raw_data_dir, "*.csv"))
+                
+                # if len(data_files) ==1:
+                #     raw_data = pd.read_csv(data_files[0])
+                #     raw_data.to_csv(os.path.join(self.ingestion_config.raw_data_dir,'raw_data.csv'), index=False)
 
             # Split the dataset into train and test
-            if not os.path.exists(self.ingestion_config.test_data_path):
-                # split the dataset
-                train_data, test_data = train_test_split(raw_data, test_size=0.25)
-                logging.debug("Data was splitted into train & test")
+            # if not os.path.exists(self.ingestion_config.test_data_path):
+            # split the dataset
+            train_data, test_data = train_test_split(raw_data, test_size=0.25)
+            logging.debug("Data was splitted into train & test")
 
-                train_data.to_csv(self.ingestion_config.train_data_path, index=False)
-                test_data.to_csv(self.ingestion_config.test_data_path, index=False)
+            train_data.to_csv(self.ingestion_config.train_data_path, index=False)
+            test_data.to_csv(self.ingestion_config.test_data_path, index=False)
             logging.info("Data ingestion is completed.!")
 
             return (

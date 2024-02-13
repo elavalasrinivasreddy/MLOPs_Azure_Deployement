@@ -17,9 +17,9 @@ class ModelTrainerConfig:
         "LinearRegression": LinearRegression(),
         "Lasso": Lasso(),
         "Ridge": Ridge(),
-        "ElasticNet": ElasticNet(),
-        "RandomForestRegressor": RandomForestRegressor(),
-        "XGBRegressor": XGBRegressor()
+        # "ElasticNet": ElasticNet(),
+        # "RandomForestRegressor": RandomForestRegressor(),
+        # "XGBRegressor": XGBRegressor()
     }
 
 class ModelTrainer:
@@ -39,11 +39,15 @@ class ModelTrainer:
                 y_test= test_arr[:,-1],
                 models=self.trainer_config.models
             )
-            logging.info(f"Model Report: \n{model_reports}")
+            # logging.info(f"Model Report: \n{model_reports}")
 
             # Get the best model
-            best_model = Keymax = max(model_reports, key= lambda x: model_reports[x][2])
+            best_model = max(model_reports, key= lambda x: model_reports[x][2])
             logging.info(f"Best Model: {best_model}")
+
+            # Rename the best model name
+            os.rename(src=f"{os.path.join(os.path.dirname(self.trainer_config.trained_model_path),f'{best_model}.pkl')}",
+                      dst=self.trainer_config.trained_model_path)
             
         except Exception as e:
             raise CustomException(e,sys)

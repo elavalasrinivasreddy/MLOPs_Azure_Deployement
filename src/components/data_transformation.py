@@ -16,7 +16,7 @@ from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file = os.path.join('artifacts','preprocessor.pkl')
-    target = "Price"
+    target = "price"
     drop_cols = ["id"]
     # custom ranking for ordinal features
     ordinal_feature_map = {
@@ -83,8 +83,9 @@ class DataTransformation:
             X_train = train_data.drop(self.data_transformation_config.target,axis=1)
             y_train = train_data[self.data_transformation_config.target]
 
-            X_test = test_data.drop(self.data_transformation_config.target,axis=1)
-            y_test = test_data[self.data_transformation_config.target]
+            if self.data_transformation_config.target in test_data.columns:
+                X_test = test_data.drop(self.data_transformation_config.target,axis=1)
+                y_test = test_data[self.data_transformation_config.target]
 
             # separte the category columns
             self.object_cols = X_train.columns[X_train.dtypes=='object']
