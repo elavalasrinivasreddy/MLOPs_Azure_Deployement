@@ -1,11 +1,12 @@
-import os
-import sys
+# import os
+# import sys
 
-from src.logger.logger import logging
-from src.exceptions.exception import CustomException
+# from src.logger.logger import logging
+# from src.exceptions.exception import CustomException
 from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import DataTransformation
 from src.components.model_training import ModelTrainer
+from src.components.model_evaluation import ModelEvaluation
 
 ingestion_obj = DataIngestion()
 
@@ -17,3 +18,5 @@ train, test = data_preprocessing.init_data_transformation(train_path,test_path)
 model_train_obj = ModelTrainer()
 model_train_obj.init_model_training(train,test)
 
+model_eval_obj = ModelEvaluation()
+model_eval_obj.init_evaluate_model(test)

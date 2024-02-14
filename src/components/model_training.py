@@ -17,9 +17,9 @@ class ModelTrainerConfig:
         "LinearRegression": LinearRegression(),
         "Lasso": Lasso(),
         "Ridge": Ridge(),
-        # "ElasticNet": ElasticNet(),
-        # "RandomForestRegressor": RandomForestRegressor(),
-        # "XGBRegressor": XGBRegressor()
+        "ElasticNet": ElasticNet(),
+        "RandomForestRegressor": RandomForestRegressor(),
+        "XGBRegressor": XGBRegressor()
     }
 
 class ModelTrainer:
@@ -46,7 +46,7 @@ class ModelTrainer:
             logging.info(f"Best Model: {best_model}")
 
             # Rename the best model name
-            os.rename(src=f"{os.path.join(os.path.dirname(self.trainer_config.trained_model_path),f'{best_model}.pkl')}",
+            os.replace(src=f"{os.path.join(os.path.dirname(self.trainer_config.trained_model_path),f'{best_model}.pkl')}",
                       dst=self.trainer_config.trained_model_path)
             
         except Exception as e:

@@ -55,7 +55,7 @@ def evaluate_model(X_train,y_train,X_test,y_test,models):
             print("R2-score: ",R2)
             print('\n','--'*20)
 
-            logging.info(f"{model_name} Model Performance: \n{MSE, MAE, R2}")
+            logging.info(f"{model_name} Model Performance: {MSE, MAE, R2}")
 
             report[model_name] = [MSE, MAE, R2]
 

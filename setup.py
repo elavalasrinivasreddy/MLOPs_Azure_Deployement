@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="gem-stone-price-pred",
-    version='0.0.3',
+    version='0.0.9',
     author="Elavala",
     author_email="elavalasrinivasreddy@gmail.com",
     install_requires=["scikit-learn","pandas"],
