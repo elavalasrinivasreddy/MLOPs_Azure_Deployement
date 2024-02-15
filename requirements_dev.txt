@@ -6,6 +6,7 @@ seaborn
 flask
 mlflow
 dvc
+pendulum
 
 pytest
 tox

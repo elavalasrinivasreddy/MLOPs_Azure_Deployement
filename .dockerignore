@@ -1,0 +1,6 @@
+.venv\
+artifacts\
+build\
+dist\
+*.egg-info
+mlruns\
