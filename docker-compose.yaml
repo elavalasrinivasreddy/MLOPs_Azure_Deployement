@@ -3,7 +3,7 @@ services:
   application:
     build: .
     # image: ${image_name}
-    image: Airflow_test
+    image: airflow_test
     container_name: gemstone-prediction
     ports:
       - "8080:8080"

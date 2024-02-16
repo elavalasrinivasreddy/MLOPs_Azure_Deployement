@@ -1,12 +1,13 @@
 pandas
 numpy
 scikit-learn
-xgboost
+# xgboost
 seaborn
 flask
 mlflow
 dvc
-pendulum
+apache-airflow
+pendulum==2.0.0
 
 pytest
 tox
@@ -14,6 +15,6 @@ black
 flake8
 mypy
 
-ipykernel
+# ipykernel
 
 -e .
